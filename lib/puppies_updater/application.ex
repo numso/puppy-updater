@@ -10,6 +10,7 @@ defmodule PuppiesUpdater.Application do
     children = [
       PuppiesUpdaterWeb.Telemetry,
       PuppiesUpdater.Repo,
+      {Oban, Application.fetch_env!(:puppies_updater, Oban)},
       {DNSCluster, query: Application.get_env(:puppies_updater, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: PuppiesUpdater.PubSub},
       # Start the Finch HTTP client for sending emails
