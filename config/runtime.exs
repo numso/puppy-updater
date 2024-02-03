@@ -20,6 +20,10 @@ if System.get_env("PHX_SERVER") do
   config :puppies_updater, PuppiesUpdaterWeb.Endpoint, server: true
 end
 
+config :puppies_updater,
+  email: System.get_env("PUPPIES_EMAIL") || raise("PUPPIES_EMAIL env is missing."),
+  password: System.get_env("PUPPIES_PASSWORD") || raise("PUPPIES_PASSWORD env is missing.")
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||
