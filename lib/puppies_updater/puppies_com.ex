@@ -15,6 +15,7 @@ defmodule PuppiesUpdater.PuppiesCom do
         {:ok, body |> Jason.decode!() |> Map.get("id_token")}
 
       error ->
+        IO.inspect("get_token/0 failed")
         IO.inspect(error)
         {:error, error}
     end
@@ -32,6 +33,7 @@ defmodule PuppiesUpdater.PuppiesCom do
         {:ok, body |> Jason.decode!()}
 
       error ->
+        IO.inspect("get_user/1 failed")
         IO.inspect(error)
         {:error, error}
     end
@@ -50,6 +52,7 @@ defmodule PuppiesUpdater.PuppiesCom do
         {:ok, body |> Jason.decode!()}
 
       error ->
+        IO.inspect("update_user/2 failed")
         IO.inspect(error)
         {:error, error}
     end
